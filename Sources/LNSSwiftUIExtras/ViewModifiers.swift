@@ -35,12 +35,12 @@ import SwiftUI
 //	}
 //
 
-struct FrameCalculator: ViewModifier {
+public struct FrameCalculator: ViewModifier {
 
-    @Binding var frame: CGRect
-    let coordinateSpace: CoordinateSpace
+    @Binding public var frame: CGRect
+    public let coordinateSpace: CoordinateSpace
 
-    func body(content: Content) -> some View {
+    public func body(content: Content) -> some View {
         content
             .background(
                 GeometryReader { proxy in
@@ -54,7 +54,7 @@ struct FrameCalculator: ViewModifier {
 }
 
 extension View {
-    func saveFrame(in frame: Binding<CGRect>, coordinateSpace: CoordinateSpace = .global
+    public func saveFrame(in frame: Binding<CGRect>, coordinateSpace: CoordinateSpace = .global
 ) -> some View {
         modifier(FrameCalculator(frame: frame, coordinateSpace: coordinateSpace))
     }
@@ -74,7 +74,7 @@ extension View {
 //	
 
 extension View {
-    @ViewBuilder func `if`<Content: View>(_ condition: Bool, transform: (Self) -> Content) -> some View {
+    @ViewBuilder public func `if`<Content: View>(_ condition: Bool, transform: (Self) -> Content) -> some View {
         if condition {
             transform(self)
         } else {
