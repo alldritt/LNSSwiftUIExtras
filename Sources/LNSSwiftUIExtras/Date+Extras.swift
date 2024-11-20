@@ -74,7 +74,7 @@ public extension Date {
 
 
 @available(macOS 12.0, iOS 15.0, tvOS 15.0, watchOS 8.0, *)
-extension Date {
+public extension Date {
     var weekdaySymbol: String {
         formatted(Date.FormatStyle().weekday(.narrow))
     }
