@@ -70,6 +70,11 @@ public extension Date {
         Calendar.current.component(.weekday, from: self)
     }
     
+}
+
+
+@available(macOS 12.0, iOS 15.0, tvOS 15.0, watchOS 8.0, *)
+extension Date {
     var weekdaySymbol: String {
         formatted(Date.FormatStyle().weekday(.narrow))
     }
@@ -97,6 +102,4 @@ public extension Date {
     static var usecTimestamp : UInt64 {
         return UInt64(Date().timeIntervalSince1970 * Double(USEC_PER_SEC) /* convert to Microseconds */)
     }
-
 }
-
