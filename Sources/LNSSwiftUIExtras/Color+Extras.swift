@@ -16,4 +16,32 @@ public extension Color {
         let luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b
         return  luminance < 0.6 ? .white : .black
     }
+    
+    var components: (r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) {
+        if let components = self.cgColor?.components {
+            switch components.count {
+            case 2:
+                return (r: components[0], g: components[0], b: components[0], a: components[1])
+                
+            default:
+                return (r: components[0], g: components[1], b: components[2], a: components[3])
+            }
+        }
+        else {
+            return (r: 0, g: 0, b: 0, a: 0)
+        }
+    }
+
+    func interpolate(to toColor: Color, with progress: CGFloat) -> Color {
+        let fromComponents = self.components
+        let toComponents = toColor.components
+
+        let r = (1 - progress) * fromComponents.r + progress * toComponents.r
+        let g = (1 - progress) * fromComponents.g + progress * toComponents.g
+        let b = (1 - progress) * fromComponents.b + progress * toComponents.b
+        let a = (1 - progress) * fromComponents.a + progress * toComponents.a
+
+        return Color(red: r, green: g, blue: b).opacity(a)
+    }
+
 }
