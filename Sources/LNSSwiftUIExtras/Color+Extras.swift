@@ -43,5 +43,21 @@ public extension Color {
 
         return Color(red: r, green: g, blue: b).opacity(a)
     }
+}
 
+
+public extension Color {
+    #if os(watchOS)
+    static let lightText = Color.primary
+    static let darkText = Color.secondary
+    static let systemBackground = Color.clear
+    static let secondarySystemBackground = Color(.sRGB, white: 0.07, opacity: 1.0)
+    static let tertiarySystemBackground = Color(.sRGB, white: 0, opacity: 1.0)
+    #else
+    static let lightText = Color(UIColor.lightText)
+    static let darkText = Color(UIColor.darkText)
+    static let systemBackground = Color(UIColor.systemBackground)
+    static let secondarySystemBackground = Color(UIColor.secondarySystemBackground)
+    static let tertiarySystemBackground = Color(UIColor.tertiarySystemBackground)
+    #endif
 }
