@@ -9,7 +9,7 @@ import Foundation
 
 
 extension URL {
-    public func temporaryURL(name: String?) -> URL {
+    static public func temporaryURL(name: String? = nil) -> URL {
         let tempDir = URL.temporaryDirectory
         let tempName = name ?? "\(ProcessInfo.processInfo.globallyUniqueString).tmp"
         
