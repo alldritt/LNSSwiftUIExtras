@@ -12,7 +12,11 @@ public extension Color {
     var contrastingBlackOrWhite: Color {
         var r, g, b, a: CGFloat
         (r, g, b, a) = (0, 0, 0, 0)
+        #if os(macOS)
+        NSColor(self).getRed(&r, green: &g, blue: &b, alpha: &a)
+        #else
         UIColor(self).getRed(&r, green: &g, blue: &b, alpha: &a)
+        #endif
         let luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b
         return  luminance < 0.6 ? .white : .black
     }
@@ -53,11 +57,17 @@ public extension Color {
     static let systemBackground = Color.clear
     static let secondarySystemBackground = Color(.sRGB, white: 0.07, opacity: 1.0)
     static let tertiarySystemBackground = Color(.sRGB, white: 0, opacity: 1.0)
-    #else
+    #elseif os(iOS)
     static let lightText = Color(UIColor.lightText)
     static let darkText = Color(UIColor.darkText)
     static let systemBackground = Color(UIColor.systemBackground)
     static let secondarySystemBackground = Color(UIColor.secondarySystemBackground)
     static let tertiarySystemBackground = Color(UIColor.tertiarySystemBackground)
+    #elseif os(macOS)
+    //static let lightText = Color(NSColor.lightText)
+    //static let darkText = Color(CGColor.darkText)
+    static let systemBackground = Color(NSColor.windowBackgroundColor)
+    static let secondarySystemBackground = Color(NSColor.windowBackgroundColor)
+    static let tertiarySystemBackground = Color(NSColor.windowBackgroundColor)
     #endif
 }
