@@ -34,9 +34,16 @@ public extension Color {
         else {
             var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
 
+            #if os(macOS)
+            if let rgbColor = NSColor(self).usingColorSpace(.deviceRGB) {
+                rgbColor.getRed(&r, green: &g, blue: &b, alpha: &a)
+                return (r: r, g: g, b: b, a: a)
+            }
+            #else
             if UIColor(self).getRed(&r, green: &g, blue: &b, alpha: &a) {
                 return (r: r, g: g, b: b, a: a)
             }
+            #endif
         }
 
         return (r: 0, g: 0, b: 0, a: 0)
