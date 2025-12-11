@@ -32,8 +32,14 @@ public extension Color {
             }
         }
         else {
-            return (r: 0, g: 0, b: 0, a: 0)
+            var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+
+            if UIColor(self).getRed(&r, green: &g, blue: &b, alpha: &a) {
+                return (r: r, g: g, b: b, a: a)
+            }
         }
+
+        return (r: 0, g: 0, b: 0, a: 0)
     }
 
     func interpolate(to toColor: Color, with progress: CGFloat) -> Color {
