@@ -65,22 +65,16 @@ public extension Color {
 
 public extension Color {
     #if os(watchOS)
-    static let lightText = Color.primary
-    static let darkText = Color.secondary
-    static let systemBackground = Color.clear
-    static let secondarySystemBackground = Color(.sRGB, white: 0.07, opacity: 1.0)
-    static let tertiarySystemBackground = Color(.sRGB, white: 0, opacity: 1.0)
+    static let lnsSystemBackground = Color.clear
+    static let lnsSecondarySystemBackground = Color(.sRGB, white: 0.07, opacity: 1.0)
+    static let lnsTertiarySystemBackground = Color(.sRGB, white: 0, opacity: 1.0)
     #elseif os(iOS)
-    static let lightText = Color(UIColor.lightText)
-    static let darkText = Color(UIColor.darkText)
-    static let systemBackground = Color(UIColor.systemBackground)
-    static let secondarySystemBackground = Color(UIColor.secondarySystemBackground)
-    static let tertiarySystemBackground = Color(UIColor.tertiarySystemBackground)
+    static let lnsSystemBackground = Color(UIColor.systemBackground)
+    static let lnsSecondarySystemBackground = Color(UIColor.secondarySystemBackground)
+    static let lnsTertiarySystemBackground = Color(UIColor.tertiarySystemBackground)
     #elseif os(macOS)
-    //static let lightText = Color(NSColor.lightText)
-    //static let darkText = Color(CGColor.darkText)
-    static let systemBackground = Color(NSColor.windowBackgroundColor)
-    static let secondarySystemBackground = Color(NSColor.windowBackgroundColor)
-    static let tertiarySystemBackground = Color(NSColor.windowBackgroundColor)
+    static let lnsSystemBackground = Color(NSColor.windowBackgroundColor)
+    static let lnsSecondarySystemBackground = Color(NSColor.windowBackgroundColor)
+    static let lnsTertiarySystemBackground = Color(NSColor.windowBackgroundColor)
     #endif
 }

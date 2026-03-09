@@ -165,29 +165,17 @@ final class ColorExtrasTests: XCTestCase {
     }
 
     func testSystemBackgroundColorExists() {
-        let backgroundColor = Color.systemBackground
+        let backgroundColor = Color.lnsSystemBackground
         XCTAssertNotNil(backgroundColor)
     }
 
     func testSecondarySystemBackgroundColorExists() {
-        let backgroundColor = Color.secondarySystemBackground
+        let backgroundColor = Color.lnsSecondarySystemBackground
         XCTAssertNotNil(backgroundColor)
     }
 
     func testTertiarySystemBackgroundColorExists() {
-        let backgroundColor = Color.tertiarySystemBackground
+        let backgroundColor = Color.lnsTertiarySystemBackground
         XCTAssertNotNil(backgroundColor)
     }
-
-    #if !os(macOS)
-    func testLightTextColorExists() {
-        let textColor = Color.lightText
-        XCTAssertNotNil(textColor)
-    }
-
-    func testDarkTextColorExists() {
-        let textColor = Color.darkText
-        XCTAssertNotNil(textColor)
-    }
-    #endif
 }
